@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wanderwise – Contact</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+
+/* ---------------- GLOBAL ----------------- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+a { text-decoration: none; color: inherit; }
+
+/* ---------------- HEADER ----------------- */
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo-section img {
+    width: 200px;
+}
+.search-bar {
+    width: 45%;
+    position: relative;
+}
+.search-bar input {
+    width: 100%;
+    padding: 15px 50px 15px 20px;
+    border-radius: 35px;
+    border: none;
+    background: #f1371c;
+    color: #fff;
+    font-size: 17px;
+}
+.search-bar i {
+    position: absolute;
+    right: 20px;
+    top: 13px;
+    color: #fff;
+    font-size: 21px;
+}
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    font-size: 20px;
+}
+.header-icons img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* ---------------- NAVBAR ----------------- */
+nav {
+    text-align: center;
+    padding: 10px;
+}
+nav a {
+    margin: 0 20px;
+    font-size: 18px;
+    position: relative;
+}
+nav a.active::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: black;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+}
+
+/* ---------------- HERO SECTION ----------------- */
+.hero {
+    width: 100%;
+    height: 330px;
+    background-image: url("contact.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+    box-sizing: border-box;
+}
+.hero h1 {
+    font-size: 36px;
+    margin: 0;
+    font-weight: bold;
+}
+.hero p {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+/* ---------------- DESCRIPTION ----------------- */
+.description {
+    padding: 30px 40px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* ---------------- CONTACT GRID ----------------- */
+.contact-info {
+    padding: 30px 50px;
+}
+.contact-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+.contact-arrow {
+    font-size: 24px;
+    margin-left: 10px;
+}
+.contact-grid {
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    font-size: 17px;
+    line-height: 1.8;
+}
+.contact-grid b {
+    font-size: 18px;
+}
+
+/* ---------------- FOOTER ----------------- */
+footer {
+    background: black;
+    color: white;
+    padding: 50px;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+footer h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+footer li {
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+
+.footer-logo img {
+    width: 55px;
+}
+
+.footer-profile {
+    text-align: left;
+}
+.footer-profile img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.social-icons i {
+    margin-right: 15px;
+    font-size: 22px;
+}
+
+footer .bottom {
+    text-align: center;
+    margin-top: 35px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="logo-section">
+        <img src="logo.png" alt="">
+    </div>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search Destinations">
+        <i class="fa fa-search"></i>
+    </div>
+
+    <div class="header-icons">
+        <img src="btn1.jpg" alt="">
+        <i class="fa-regular fa-heart"></i>
+        <i class="fa-solid fa-cart-shopping"></i>
+        <i class="fa-regular fa-bell"></i>
+    </div>
+</header>
+
+<!-- NAVIGATION -->
+<nav>
+    <a href="Home.html">Home <span class="dot"></span></a>
+    <a href="Destination.html">Destinations <span class="dot"></span></a>
+        <a href="Categories.html">Categories <span class="dot"></span></a>
+        <a href="Packages.html">Packages <span class="dot"></span></a>
+        <a href="Blog.html" class="Active">Blogs <span class="dot"></span></a>
+        <a href="Contact.html">Contact <span class="dot"></span></a>
+</nav>
+
+<!-- HERO SECTION -->
+<div class="hero">
+    <div>
+        <h1>We’d Love to Help</h1>
+        <p>You Plan Your Next Journey</p>
+    </div>
+</div>
+
+<!-- DESCRIPTION -->
+<div class="description">
+    Have a question, need help choosing the perfect package, or just want to chat about your dream destination?
+    Our travel experts are here for you every step of the way. Whether it’s a quick weekend escape or a month-long
+    adventure, we’re just a message away.
+</div>
+
+<!-- CONTACT INFO -->
+<div class="contact-info">
+    <span class="contact-title">Get In Touch</span>
+    <span class="contact-arrow">→</span>
+
+    <div class="contact-grid">
+        <div>
+            <b>Address:</b><br>
+            123 Wander Street, Travel City, TX 54321
+        </div>
+
+        <div>
+            <b>Phone:</b><br>
+            +1 234 567 890
+        </div>
+
+        <div>
+            <b>Email:</b><br>
+            support@wanderwise.com
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-grid">
+
+        <div class="footer-logo">
+            <img src="logo.png">
+            <h3>Wanderwise</h3>
+            <ul>
+                <li>Who We Are</li>
+                <li>Our Mission</li>
+                <li>How It Works</li>
+                <li>Success</li>
+                <li>Vacations</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <ul>
+                <li>Browse</li>
+                <li>Packages</li>
+                <li>Categories</li>
+                <li>Support</li>
+                <li>Blog</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Explore</h3>
+            <ul>
+                <li>Adventure</li>
+                <li>Beach</li>
+                <li>City Tours</li>
+                <li>Family</li>
+            </ul>
+        </div>
+
+        <div class="footer-profile">
+            <h3>Contact & Social</h3>
+            123 Saik Street, Chennai, TN<br>
+            +91-7867980-688<br>
+            Wan@wanderwisetravel.com<br><br>
+
+            <img src="footer.jpg">
+
+            <p style="margin-top:15px;">Follow Us On :</p>
+            <div class="social-icons">
+                <i class="fa-brands fa-square-instagram"></i>
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-youtube"></i>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="bottom">
+        © 2025 wanderwisetravel.com. All rights reserved.<br>
+        Terms & Conditions | Privacy Policy
+    </div>
+
+</footer>
+
+</body>
+</html>

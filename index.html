@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WanderWise-Index</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<style>
+/* ---------- GLOBAL ---------- */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background:#fff;
+    color:#222;
+}
+a{
+    text-decoration:none;
+}
+
+/* ---------- HEADER NAV ---------- */
+.top-nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+}
+
+.search-box{
+    display:flex;
+    align-items:center;
+    background:#ff3b2d;
+    padding:25px 35px;
+    border-radius:50px;
+    width:750px;
+}
+.search-box input{
+    border:none;
+    background:transparent;
+    width:1500px;
+    outline:none;
+    color:#fff;
+}
+.search-box ::placeholder{
+    color:white;
+    font-size: 18px;
+    padding:20px;
+
+}
+.search-box i{
+    color:white;
+}
+.nav{
+    display: flex;
+    justify-content: center;   /* CENTER NAV LINKS */
+    gap: 40px;                 /* SPACE BETWEEN LINKS */
+
+}
+.nav a {
+    position: relative;
+    text-decoration: none;
+    color: black;
+    font-size: 22px;
+    padding: 10px;
+}
+
+/* HOVER or ACTIVE underline effect */
+.nav a:hover::before,
+.nav a.active::before {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: black;
+}
+
+/* LEFT DOT */
+.nav a:hover::after,
+.nav a.active::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: calc(50% - 25px);
+    width: 6px;
+    height: 6px;
+    background: black;
+    border-radius: 50%;
+}
+
+/* RIGHT DOT */
+.nav a:hover .dot,
+.nav a.active .dot {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    right: calc(50% - 25px);
+    width: 6px;
+    height: 6px;
+    background: black;
+    border-radius: 50%;
+}
+.register-btn{
+    background:#ff3b2d;
+    padding:15px 28px;
+    border-radius:8px;
+    color:white;
+}
+
+/* ---------- HERO SECTION ---------- */
+.hero{
+    background:url('pic1.png') no-repeat center/cover;
+    height:350px;
+    padding:120px 1px;
+    color:white;
+}
+.hero h1{
+    font-size:38px;
+    font-weight:700;
+}
+.hero p{
+    margin-top:10px;
+    max-width:350px;
+}
+.hero-buttons{
+    margin-top:150px;
+    margin-left: 120px;
+    display:flex;
+    padding:20px;
+    gap:15px;
+}
+.hero-buttons button{
+    padding:10px 20px;
+    border-radius:6px;
+    border:none;
+    cursor:pointer;
+}
+.hero img{
+    overflow: hidden;
+    object-fit: cover;
+    width:100%;
+    height:80px;
+}
+.btn-primary{
+    background:#ff3b2d;
+    color:white;
+    font-size: 18px;
+}
+.btn-secondary{
+    background:white;
+    color:#444;
+    font-size: 18px;
+}
+
+/* ---------- WHY CHOOSE US ---------- */
+.section-title{
+    text-align:center;
+    margin:40px 0 20px;
+    margin-top: 100px;
+    font-size:30px;
+    font-weight:600;
+}
+.why-box{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:0 20px;
+    flex-wrap:wrap;
+}
+.why-card{
+    width:300px;
+    background:#ff3b2d;
+    color:white;
+    text-align:center;
+    padding:20px;
+    border-radius:18px;
+}
+.why-card img{
+    width:100px;
+    align-items: center;
+    padding:10px;
+}
+.why-card p{
+    text-align: center;
+    font-size: 20px;
+
+}
+
+/* ---------- ABOUT SECTION ---------- */
+.about{
+    margin-top:40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:40px;
+    background:url('about.png') no-repeat center/cover;
+    height:350px;
+    color:white;
+}
+.about-text{
+    width:50%;
+}
+
+/* ---------- DESTINATIONS ---------- */
+
+.destinations{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+.dest-card{
+    width:200px;
+    height:200px;
+    background:#ff3b2d;
+    padding:20px 20px;
+    text-align:center;
+    border-radius:18px;
+    color:white;
+}
+.dest-card img{
+    width:150px;
+    height:150px;
+    border-radius:1000px;
+    object-fit:cover;
+}
+.dest-card p{
+    font-size: 20px;
+}
+/* ---------- EXCLUSIVE PACKAGES ---------- */
+.packages{
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    flex-wrap:wrap;
+    padding:20px;
+}
+.package-card{
+    width:200px;
+    background:#ff3b2d;
+    border-radius:15px;
+    color:white;
+    overflow:hidden;
+}
+.package-card img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+}
+
+.package-info{
+    padding:15px;
+}
+.package-info b{
+    font-size: 20px;
+}
+.book-btn{
+    margin-top:10px;
+    background:white;
+    color:#0e0d0c;
+    padding:10px 22px;
+    border-radius:6px;
+    border:none;
+    font-size: 16px;
+    cursor:pointer;
+}
+
+/* ---------- CLIENT SECTION ---------- */
+.clients{
+    background:#ff3b2d;
+    padding:25px;
+    color:white;
+    margin-top:30px;
+}
+.client-grid{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+.client-card{
+    width:400px;
+    background:ff3b2d;
+    color:#333;
+    border-radius:15px;
+    padding:15px;
+}
+.client-card img{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+}
+.client-card p{
+    color:white;
+    font-weight:600;
+}
+.rating{
+    color:#ffb300;
+}
+/* FOOTER */
+.footer {
+    background: #000;
+    color: white;
+    padding: 30px;
+    margin-top: 40px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    line-height: 24px;
+    gap:4%;
+}
+.footer-grid img{
+    width: 80px;
+    height: 80px;
+    border-radius: 120px;
+}
+.footer p {
+    opacity: .8;
+}
+
+.footer h4 {
+    margin-bottom: 10px;
+}
+
+footer .copyright {
+    text-align: center;
+    margin-top: 20px;
+    opacity: .8;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<div class="top-nav">
+    <img src="logo.png" width="120">
+
+    <div class="search-box">
+        <input type="text" placeholder="Search Destinations">
+        🔍
+    </div>
+    <br>
+    
+ <a class="register-btn" href="#">Register</a>
+ </div>
+    <div class="nav">
+    <a href="Home.html">Home <span class="dot"></span></a>
+    <a href="Destination.html">Destinations <span class="dot"></span></a>
+        <a href="Categories.html">Categories <span class="dot"></span></a>
+        <a href="Packages.html">Packages <span class="dot"></span></a>
+        <a href="Blog.html" class="Active">Blogs <span class="dot"></span></a>
+        <a href="Contact.html">Contact <span class="dot"></span></a>
+</div>
+
+   
+
+
+
+<!-- ========== HERO ========== -->
+<div class="hero">
+    
+    <div class="hero-buttons">
+        <button class="btn-primary">Plan Your Trip</button>
+        <button class="btn-secondary">Enquiry</button>
+    </div>
+    <img src="pic2.jpg" alt="images">
+</div>
+
+
+<!-- ========== WHY CHOOSE US ========== -->
+<h2 class="section-title">Why Choose Us!</h2>
+
+<div class="why-box">
+    <div class="why-card">
+        <img src="icon1.png">
+        <p>"Trusted by 1 Million Travelers"</p>
+    </div>
+    <div class="why-card">
+        <img src="icon2.png">
+        <p>"Best Price Guarantee"</p>
+    </div>
+    <div class="why-card">
+        <img src="icon3.png">
+        <p>"Certified Travel Experts"</p>
+    </div>
+    <div class="why-card">
+        <img src="icon4.png">
+        <p>"24/7 Customer Support"</p>
+    </div>
+</div>
+
+
+<!-- ========== ABOUT US ========== -->
+<div class="about">
+    
+</div>
+
+
+<!-- ========== POPULAR DESTINATIONS ========== -->
+<h2 class="section-title">Popular destinations</h2>
+
+<div class="destinations">
+    <div class="dest-card">
+        <img src="paris.png"><P> Paris</P>
+    </div>
+    <div class="dest-card">
+        <img src="Bali.png"><p> Bali</p>
+    </div>
+    <div class="dest-card">
+        <img src="Cape down.jpg"> <p>Cape Town</p>
+    </div>
+    <div class="dest-card">
+        <img src="rome.jpg"><p>Rome</p> 
+    </div>
+    <div class="dest-card">
+        <img src="california.jpg"><p> California</p>
+    </div>
+</div>
+
+
+<!-- ========== EXCLUSIVE PACKAGES ========== -->
+<h2 class="section-title">Exclusive Packages</h2>
+
+<div class="packages">
+
+    <div class="package-card">
+        <img src="paris.png">
+        <div class="package-info">
+            <b>Paris</b><br>
+            6 Days / 5 Nights<br>$1200<br>
+            <button class="book-btn">Book now</button>
+        </div>
+    </div>
+
+    <div class="package-card">
+        <img src="Bali.png">
+        <div class="package-info">
+            <b>Bali</b><br>
+            8 Days / 7 Nights<br>$2200<br>
+            <button class="book-btn">Book now</button>
+        </div>
+    </div>
+
+    <div class="package-card">
+        <img src="Cape down.jpg">
+        <div class="package-info">
+            <b>Cape Town</b><br>
+            7 Days / 6 Nights<br>$1800<br>
+            <button class="book-btn">Book now</button>
+        </div>
+    </div>
+
+    <div class="package-card">
+        <img src="rome.jpg">
+        <div class="package-info">
+            <b>Rome</b><br>
+            6 Days / 5 Nights<br>$1200<br>
+            <button class="book-btn">Book now</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- ========== CLIENTS ========== -->
+<h2 class="section-title">What Say Our Clients</h2>
+
+<div class="clients">
+    <div class="client-grid">
+
+        <div class="client-card">
+            <img src="user1.jpg"><p>Emily R.</p>
+            <p>This travel agency made our vacation unforgettable! Excellent service and a fantastic itinerary. Highly recommend</p>
+            <p class="rating">★★★★★</p>
+        </div>
+
+        <div class="client-card">
+            <img src="user2.jpg"><p>David W.</p>
+            <p>This travel agency made our vacation unforgettable! Excellent service</p>
+            <p class="rating">★★★★★</p>
+        </div>
+
+        <div class="client-card">
+            <img src="user3.jpg"><p>Andreya S.</p>
+            <p>This travel agency made our vacation unforgettable! Excellent service</p>
+            <p class="rating">★★★★★</p>
+        </div>
+
+    </div>
+</div>
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-grid">
+
+        <div>
+            <img src="logo1.png" width="100"><h2>WanderWise</h2>
+        </div>
+
+        <div>
+            <h4>About Us</h4>
+            <p>Who We Are</p>
+            <p>Our Mission</p>
+            <p>Success</p>
+            <p>Vacations</p>
+        </div>
+
+        <div>
+            <h4>Quick Links</h4>
+            <p>Browse</p>
+            <p>Packages</p>
+            <p>Categories</p>
+            <p>Support</p>
+        </div>
+
+        <div>
+            <h4>Explore</h4>
+            <p>Adventure</p>
+            <p>Beach</p>
+            <p>City Tours</p>
+            <p>Family</p>
+        </div>
+
+        <div>
+            <h4>Contact & Social</h4>
+            <p>123 Said Street, Chennai</p>
+            <p>+91 7867980-688</p>
+            <p>wan@wanderwisetravel.com</p>
+        </div>
+        <div>
+            <img src="footer.jpg" width="100">
+            <h4>Follow Us On</h4>
+            <i class="bi bi-youtube"></i>
+            <i class="bi bi-facebook"></i>
+            <i class="bi bi-twitter"></i>
+            <i class="bi bi-instagram"></i>
+        </div>
+
+    </div>
+
+    <p class="copyright">
+        © 2025 wanderwisevacation. All rights reserved.
+    </p>
+
+</footer>
+
+</body>
+</html>

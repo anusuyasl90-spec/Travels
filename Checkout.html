@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Payment selection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background:#fff;
+    color:#222;
+}
+a{
+    text-decoration:none;
+}
+
+/* ---------- HEADER NAV ---------- */
+.top-nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+}
+
+.search-box{
+    display:flex;
+    align-items:center;
+    background:#ff3b2d;
+    padding:15px 35px;
+    border-radius:50px;
+    width:750px;
+}
+.search-box input{
+    border:none;
+    background:transparent;
+    width:1500px;
+    outline:none;
+    color:#fff;
+}
+.search-box ::placeholder{
+    color:white;
+    font-size: 18px;
+    padding:20px;
+
+}
+.search-box i{
+    color:white;
+}
+.nav{
+    display: flex;
+    justify-content: center;   /* CENTER NAV LINKS */
+    gap: 40px;                 /* SPACE BETWEEN LINKS */
+
+}
+.nav a {
+    position: relative;
+    text-decoration: none;
+    color: black;
+    font-size: 22px;
+    padding: 10px;
+}
+
+/* HOVER or ACTIVE underline effect */
+.nav a:hover::before,
+.nav a.active::before {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: black;
+}
+
+/* LEFT DOT */
+.nav a:hover::after,
+.nav a.active::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: calc(50% - 25px);
+    width: 6px;
+    height: 6px;
+    background: black;
+    border-radius: 50%;
+}
+
+/* RIGHT DOT */
+.nav a:hover .dot,
+.nav a.active .dot {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    right: calc(50% - 25px);
+    width: 6px;
+    height: 6px;
+    background: black;
+    border-radius: 50%;
+}
+.icons{
+    display: flex;
+    justify-content: space-between;
+    gap:10px;
+}
+.user-actions {
+    /* (This part remains the same to keep everything horizontal) */
+    grid-column: 3 / 4; 
+    grid-row: 1 / 2;
+    display: flex; 
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px; /* Spacing between icons/dropdown */
+    position: relative; /* May be needed if the main navbar doesn't position dropdown */
+}
+
+/* --- Dropdown Specific Styling --- */
+.profile-dropdown {
+    position: relative; /* Important: The dropdown content will position itself relative to this container */
+    display: inline-block; /* Allows it to participate in the flex layout */
+}
+
+.user-profile-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin-left: -80px;
+}
+
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    right: 0; 
+    top: 100%; 
+    min-width: 300px; /* Increased width to accommodate longer text */
+    background-color: #F31B03 ;
+    color:white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100; 
+    padding: 5px 0;
+    border-radius: 5px;
+}
+
+.dropdown-content a {
+    color: var(--text-color);
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block; 
+    font-size: 1.4rem;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--light-bg);
+    color: var(--primary-color);
+}
+
+/* New CSS for the Separator Line */
+.dropdown-content hr {
+    border: 0;
+    height: 1px;
+    background: #eee;
+    margin: 5px 0;
+}
+
+/* Class added by JavaScript to show the menu */
+.dropdown-content.show {
+    display: block;
+} 
+
+
+</style>
+</head>
+<body>
+  <div class="top-nav">
+    <img src="logo.png" width="120">
+
+    <div class="search-box">
+        <input type="text" placeholder="Search Destinations">
+        🔍
+    </div>
+    <br>
+    
+ <div class="icons">
+        <div class="user-actions">
+    
+    <div class="profile-dropdown">
+        <a href="#" class="profile-toggle" id="profileToggle">
+            <img src="btn1.jpg" alt="Profile" class="user-profile-icon">
+        </a>
+<div class="dropdown-content" id="profileDropdownContent">
+            <a href="#">My Account</a>
+            <hr> <a href="Personal Information.html">Personal information</a>
+            <a href="Myorder.html">My Booking</a>
+            <a href="Password.html">Password Manager</a>
+            <hr> <a href="logout.html">Logout</a>
+        </div>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // ... (Your existing mobile menu toggle code here) ...
+
+    // 👤 Profile Dropdown Toggle 
+    const profileToggle = document.getElementById('profileToggle');
+    const dropdownContent = document.getElementById('profileDropdownContent');
+
+    if (profileToggle && dropdownContent) {
+        profileToggle.addEventListener('click', function(event) {
+            // Prevents the link from jumping to the top of the page
+            event.preventDefault(); 
+            // Toggles the 'show' class to display/hide the menu
+            dropdownContent.classList.toggle('show');
+        });
+
+        // Close the dropdown if the user clicks outside of it
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.profile-toggle') && !event.target.closest('.profile-dropdown')) {
+                if (dropdownContent.classList.contains('show')) {
+                    dropdownContent.classList.remove('show');
+                }
+            }
+        });
+    }
+});
+</script>
+    </div>
+
+        <i class="bi bi-heart"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+</svg>
+        <i class="bi bi-cart"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+</svg>
+<i class="bi bi-bell"></i>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+  <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
+</svg>
+    </div>
+ </div>
+ 
+ </div>
+     <div class="nav">
+    <a href="Home.html">Home <span class="dot"></span></a>
+    <a href="Destination.html">Destinations <span class="dot"></span></a>
+        <a href="Categories.html">Categories <span class="dot"></span></a>
+        <a href="Packages.html">Packages <span class="dot"></span></a>
+        <a href="Blog.html" class="Active">Blogs <span class="dot"></span></a>
+        <a href="Contact.html">Contact <span class="dot"></span></a>
+</div>
+
+</body>
+</html>

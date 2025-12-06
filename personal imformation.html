@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Information page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background:#fff;
+    color:#222;
+}
+a{
+    text-decoration:none;
+}
+
+/* ---------- HEADER NAV ---------- */
+.top-nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+}
+
+.search-box{
+    display:flex;
+    align-items:center;
+    background:#ff3b2d;
+    padding:15px 35px;
+    border-radius:50px;
+    width:750px;
+}
+.search-box input{
+    border:none;
+    background:transparent;
+    width:1500px;
+    outline:none;
+    color:#fff;
+}
+.search-box ::placeholder{
+    color:white;
+    font-size: 18px;
+    padding:20px;
+
+}
+.search-box i{
+    color:white;
+}
+.nav{
+    display: flex;
+    justify-content: center;   /* CENTER NAV LINKS */
+    gap: 40px;                 /* SPACE BETWEEN LINKS */
+
+}
+.nav a {
+    position: relative;
+    text-decoration: none;
+    color: black;
+    font-size: 22px;
+    padding: 10px;
+}
+
+/* HOVER or ACTIVE underline effect */
+.nav a:hover::before,
+.nav a.active::before {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: black;
+}
+
+/* LEFT DOT */
+.nav a:hover::after,
+.nav a.active::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: calc(50% - 25px);
+    width: 6px;
+    height: 6px;
+    background: black;
+    border-radius: 50%;
+}
+
+/* RIGHT DOT */
+.nav a:hover .dot,
+.nav a.active .dot {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    right: calc(50% - 25px);
+    width: 6px;
+    height: 6px;
+    background: black;
+    border-radius: 50%;
+}
+.icons{
+    display: flex;
+    justify-content: space-between;
+    gap:10px;
+}
+.user-actions {
+    /* (This part remains the same to keep everything horizontal) */
+    grid-column: 3 / 4; 
+    grid-row: 1 / 2;
+    display: flex; 
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px; /* Spacing between icons/dropdown */
+    position: relative; /* May be needed if the main navbar doesn't position dropdown */
+}
+
+/* --- Dropdown Specific Styling --- */
+.profile-dropdown {
+    position: relative; /* Important: The dropdown content will position itself relative to this container */
+    display: inline-block; /* Allows it to participate in the flex layout */
+}
+
+.user-profile-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin-left: -80px;
+}
+
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    right: 0; 
+    top: 100%; 
+    min-width: 300px; /* Increased width to accommodate longer text */
+    background-color: #F31B03 ;
+    color:white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100; 
+    padding: 5px 0;
+    border-radius: 5px;
+}
+
+.dropdown-content a {
+    color: var(--text-color);
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block; 
+    font-size: 1.4rem;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--light-bg);
+    color: var(--primary-color);
+}
+
+/* New CSS for the Separator Line */
+.dropdown-content hr {
+    border: 0;
+    height: 1px;
+    background: #eee;
+    margin: 5px 0;
+}
+
+/* Class added by JavaScript to show the menu */
+.dropdown-content.show {
+    display: block;
+} 
+.account-page img{
+        
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items:right;
+        width: 200px;
+        height:200px;
+        border-radius:600px;
+        margin-left: 1000px;
+}
+
+.account-title {
+    text-align: center;
+    font-size: 2rem;
+    margin: 40px 0 30px;
+}
+
+.account-content {
+    display: flex;
+    max-width: 100%;
+    margin: 0 auto 50px;
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 8px;
+    background-color:white ;
+}
+
+/* ⬅️ Account Navigation Panel */
+.account-nav-panel {
+    flex-basis: 85%; /* Takes up roughly 1/3 of the space */
+    padding-right: 20px;
+}
+
+.nav-button {
+    font-size: 30px;
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    color: rgb(8, 8, 8);
+    background-color: #f1f0ee; 
+    border-radius: 10px;
+    padding:20px;
+    gap:20%;
+    transition: background-color 0.2s;
+}
+
+.nav-button.active {
+    margin-top: 50px;
+    background-color: #F31B03 ; /* Dark background for active state */
+    color: #faf6f6;
+    font-size: 30px;
+}
+
+.nav-button:hover:not(.active) {
+    background-color: #f0c99a; 
+    
+}
+
+/* ➡️ Account Details Form */
+.account-details-form {
+    flex-basis: 65%; /* Takes up roughly 2/3 of the space */
+    padding-left: 20px;
+    background-color: var(--bg-color);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.account-details-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.input-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group.full-width {
+    flex: 1 1 100%;
+}
+
+.input-group label {
+    font-size: 2rem;
+    text-align: left;
+    color:black ;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    background-color: #F31B03;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 2rem;
+}
+
+.update-button {
+    background-color:#F31B03 ; /* Use the tan color for the button */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-size: 2rem;
+    cursor: pointer;
+    align-self: flex-start; /* Aligns button to the left */
+    margin-top: 10px;
+    transition: background-color 0.2s;
+    font-weight: 600;
+}
+
+.update-button:hover {
+    background-color: var(--accent-color);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .account-content {
+        flex-direction: column;
+        padding: 10px;
+        margin: 0 10px 50px;
+    }
+
+    .account-nav-panel {
+        flex-basis: 100%;
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .account-details-form {
+        flex-basis: 100%;
+        padding-left: 0;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
+    background: #0f0f0f;
+    color: white;
+}
+
+.footer-section h4 {
+    margin-bottom: 10px;
+}
+
+.footer-logo img {
+    width: 60px;
+}
+
+.social i {
+    margin-right: 10px;
+    font-size: 20px;
+}
+.social img{
+    border-radius: 200%;
+    width: 100px;
+    height: 100px;
+}
+
+.copy {
+    text-align: center;
+    padding: 15px;
+    background: #111;
+    color: white;
+    font-size: 14px;
+}
+
+
+</style>
+</head>
+<body>
+    <div class="top-nav">
+    <img src="logo.png" width="120">
+
+    <div class="search-box">
+        <input type="text" placeholder="Search Destinations">
+        🔍
+    </div>
+    <br>
+    
+ <div class="icons">
+        <div class="user-actions">
+    
+    <div class="profile-dropdown">
+        <a href="#" class="profile-toggle" id="profileToggle">
+            <img src="btn1.jpg" alt="Profile" class="user-profile-icon">
+        </a>
+<div class="dropdown-content" id="profileDropdownContent">
+            <a href="#">My Account</a>
+            <hr> <a href="Personal Information.html">Personal information</a>
+            <a href="Myorder.html">My Booking</a>
+            <a href="Password.html">Password Manager</a>
+            <hr> <a href="logout.html">Logout</a>
+        </div>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // ... (Your existing mobile menu toggle code here) ...
+
+    // 👤 Profile Dropdown Toggle 
+    const profileToggle = document.getElementById('profileToggle');
+    const dropdownContent = document.getElementById('profileDropdownContent');
+
+    if (profileToggle && dropdownContent) {
+        profileToggle.addEventListener('click', function(event) {
+            // Prevents the link from jumping to the top of the page
+            event.preventDefault(); 
+            // Toggles the 'show' class to display/hide the menu
+            dropdownContent.classList.toggle('show');
+        });
+
+        // Close the dropdown if the user clicks outside of it
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.profile-toggle') && !event.target.closest('.profile-dropdown')) {
+                if (dropdownContent.classList.contains('show')) {
+                    dropdownContent.classList.remove('show');
+                }
+            }
+        });
+    }
+});
+</script>
+    </div>
+
+        <i class="bi bi-heart"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+</svg>
+        <i class="bi bi-cart"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+</svg>
+<i class="bi bi-bell"></i>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+  <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
+</svg>
+    </div>
+ </div>
+ 
+ </div>
+     <div class="nav">
+    <a href="Home.html">Home <span class="dot"></span></a>
+    <a href="Destination.html">Destinations <span class="dot"></span></a>
+        <a href="Categories.html">Categories <span class="dot"></span></a>
+        <a href="Packages.html">Packages <span class="dot"></span></a>
+        <a href="Blog.html" class="Active">Blogs <span class="dot"></span></a>
+        <a href="Contact.html">Contact <span class="dot"></span></a>
+</div>
+<main class="content-container account-page">
+        <h1 class="account-title">My Account</h1>
+        <img src="btn1.jpg" width="80">
+
+        <section class="account-content">
+            
+            <aside class="account-nav-panel">
+                <a href="#" class="nav-button active">Personal Information</a>
+                <a href="#" class="nav-button">My Booking</a>
+                <a href="#" class="nav-button">Password Manager</a>
+                <a href="#" class="nav-button logout">Logout</a>
+            </aside>
+
+            <div class="account-details-form">
+                <form>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" name="firstName">
+                        </div>
+                        <div class="input-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" name="lastName">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="input-group full-width">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group full-width">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group full-width">
+                            <label for="gender">Gender</label>
+                            <input type="text" id="gender" name="gender">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="update-button">Update Change</button>
+                </form>
+            </div>
+
+        </section>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    
+    // --- 1. Mobile Menu Toggle (from previous steps) ---
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+    }
+
+    // --- 2. Account Panel Active State ---
+    const navButtons = document.querySelectorAll('.account-nav-panel .nav-button');
+
+    navButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault(); // Stop the link from navigating
+
+            // Remove 'active' class from all buttons
+            navButtons.forEach(btn => btn.classList.remove('active'));
+
+            // Add 'active' class to the clicked button
+            this.classList.add('active');
+
+            // In a real application, you would load different content here
+            // based on the button clicked (e.g., fetch My Orders form)
+        });
+    });
+});
+    </script>
+
+<footer class="footer">
+    <div class="footer-logo">
+        <img src="logo1.png">
+    </div>
+
+    <div class="footer-section">
+        <h4>About Us</h4>
+        <p>Who We Are</p>
+        <p>Our Mission</p>
+        <p>How It Works</p>
+        <p>Success</p>
+        <p>Vacations</p>
+    </div>
+
+    <div class="footer-section">
+        <h4>Quick Links</h4>
+        <p>Browse</p>
+        <p>Packages</p>
+        <p>Categories</p>
+        <p>Support</p>
+        <p>Blog</p>
+    </div>
+
+    <div class="footer-section">
+        <h4>Explore</h4>
+        <p>Adventure</p>
+        <p>Beach</p>
+        <p>City Tours</p>
+        <p>Family</p>
+    </div>
+
+    <div class="footer-section">
+        <h4>Contact & Social</h4>
+        <p>123 saik Street, Chennai, TN</p>
+        <p>+91-7867980-688</p>
+        <p>Wan@wanderwisettravel.com</p>
+    </div>
+
+    <div class="social">
+        <img src="footer.jpg" width="100">
+        <p>Follow Us:</p>
+        <i class="fa-brands fa-youtube"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-twitter"></i>
+    </div>
+
+</footer>
+
+<div class="copy">
+    © 2025 wanderwisevacation. All rights reserved.  
+    Terms & Conditions | Privacy Policy
+</div>
+
+
+    
+</body>
+</html>
